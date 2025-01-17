@@ -5,7 +5,7 @@ import pyautogui
 import os
 
 
-def draw(filepath=None, scale = None):
+def draw(filepath=None, scale = None, threshold=0.5, pause = 0.004):
     def getImageInfo(default=1):
         while not os.path.isfile(filepath := input("Enter file path: ").strip('"')):
             filepath = input("Enter file path: ").strip('"')
@@ -15,7 +15,7 @@ def draw(filepath=None, scale = None):
             print(f"Invalid scale. Default ({default}) selected")
             scale = default
         return (filepath, scale)
-    pyautogui.PAUSE = 0.004
+    pyautogui.PAUSE = pause
     if filepath is None or scale is None:
         filepath, scale = getImageInfo()
 
@@ -29,7 +29,7 @@ def draw(filepath=None, scale = None):
         first = None
         for pidx, pixel in enumerate(row):
             average = sum(color for color in pixel.tolist())/(255*3)
-            if average<=0.5: #if black pixel
+            if average<=threshold: #if black pixel
                 if first is None:
                     first = (mousePos[0]+pidx*scale,mousePos[1]+ridx*scale,0)
                 if pidx == width-1:#if last pixel in row, do the row
@@ -50,9 +50,3 @@ def draw(filepath=None, scale = None):
                 #pyautogui.click()
                 pass
     print("Drawing complete")
-
-
-
-
-if __name__ == '__main__':
-    draw()
