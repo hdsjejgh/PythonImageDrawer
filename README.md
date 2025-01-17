@@ -13,5 +13,5 @@ Run the program, type the image path, type in scale (how many pixels to jump per
 ## Final Product
 ![Final Product](https://github.com/hdsjejgh/PythonImageDrawer/blob/86a19fd8930a0796e91d1134952679737012e073/testcases/Van%20gogh.png)
 
-##Original Image
+## Original Image
 ![Original Image](https://github.com/hdsjejgh/PythonImageDrawer/blob/86a19fd8930a0796e91d1134952679737012e073/testcases/8e673a100307433a4d14ff75cb59e764.png)
