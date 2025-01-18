@@ -1,11 +1,11 @@
 # Python Image Drawer
 Input an image, and the program will draw it pixel by pixel
 
-(Quite slow for very large images (If the drawing is set too fast, most programs I've tested (Paint 3d, MS Paint, MS Paint from 2001) crash or freeze))
+(Quite slow for very large images)
 
-Run the program, type the image path, type in scale (how many pixels to jump per pixel in the image), and then move your mouse to any drawing program.
+Run the Runner file and it runs the program
 
-(Make sure that you're zoomed out enough so that when the mouse moves, it goes to another pixel)
+(Works only if properly zoomed)
 
 ## The program working in real time
 ![Vincent Van Gogh](https://github.com/hdsjejgh/PythonImageDrawer/blob/86a19fd8930a0796e91d1134952679737012e073/testcases/ezgif-7-624a7634f1.gif)
