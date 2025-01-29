@@ -5,7 +5,7 @@ import pyautogui #To move mouse
 import os #To verify image file
 
 
-def draw(filepath=None, scale = None, threshold=0.5, pause = 0.004):
+def draw(filepath=None, scale = 1, threshold=0.5, pause = 0.004):
     """
     Draws image
     :param filepath: Path of file
@@ -13,17 +13,19 @@ def draw(filepath=None, scale = None, threshold=0.5, pause = 0.004):
     :param threshold: Brightness level needed to constitute image as white (not draw it) (defaults to 0.5)
     :param pause: Pause in seconds between movements (lower value move quicker, but can cause problems with the windows input buffer) (defaults to 0.004)
     """
-    def getImageInfo(scale,default=1): #gets image info
+    def getImageInfo(default=1): #gets image info
         while not os.path.isfile(filepath := input("Enter file path: ").strip('"')):
             filepath = input("Enter file path: ").strip('"')
-        if scale is not None:
-            scale = default
+        try:
+            scale = int(input("Enter scale: "))
+        except:
+            print(f"Invalid scale. Setting to default ({default})")
+            scale=default
         return (filepath, scale)
     pyautogui.PAUSE = pause
     if filepath is None: #gets image info from console if not provided
         filepath, scale = getImageInfo(scale)
-    if scale is None: #sets scale to 1 if None is provided
-        scale = 1
+
 
     img = Image.open(filepath)
     imageArray = np.array(img) #represents image as 3d array [rows,pixels,RGB]
