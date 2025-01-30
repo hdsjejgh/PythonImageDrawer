@@ -13,18 +13,13 @@ def draw(filepath=None, scale = 1, threshold=0.5, pause = 0.004):
     :param threshold: Brightness level needed to constitute image as white (not draw it) (defaults to 0.5)
     :param pause: Pause in seconds between movements (lower value move quicker, but can cause problems with the windows input buffer) (defaults to 0.004)
     """
-    def getImageInfo(default=1): #gets image info
+    def getImageInfo(): #gets image info
         while not os.path.isfile(filepath := input("Enter file path: ").strip('"')):
             filepath = input("Enter file path: ").strip('"')
-        try:
-            scale = int(input("Enter scale: "))
-        except:
-            print(f"Invalid scale. Setting to default ({default})")
-            scale=default
-        return (filepath, scale)
+        return filepath
     pyautogui.PAUSE = pause
     if filepath is None: #gets image info from console if not provided
-        filepath, scale = getImageInfo(scale)
+        filepath= getImageInfo()
 
 
     img = Image.open(filepath)
